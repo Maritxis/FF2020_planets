@@ -2,7 +2,6 @@
 import { html, render } from '../node_modules/lit-html/lit-html.js';
 import { styleMap } from '../node_modules/lit-html/directives/style-map.js';
 import { styles } from './styles.js';
-import { Maybe } from './maybe.js';
 
 //constants
 const url = "https://images-api.nasa.gov/search?q=";
@@ -25,8 +24,8 @@ export const generateCardTemplate = (styles) => (info) => {
 export const getData = planet  => () => fetch(url+planet);
 export const getCollection = R.prop('collection');
 export const getItems = R.prop('items');
-export const getHrefFromElement0 = R.map(R.compose(R.prop('href'), R.prop('0')));
-export const getImageFromItem = R.compose(getHrefFromElement0, Maybe.of);
-export const processItem = item => ({ title: item.data[0].title, img: getImageFromItem(item.links).getValue(), description: item.data[0].description});
+export const getHrefFromElement0 = R.compose(R.prop('href'), R.prop('0'));
+export const getImageFromItem = getHrefFromElement0;
+export const processItem = item => ({ title: item.data[0].title, img: getImageFromItem(item.links), description: item.data[0].description});
 export const processInfo = R.pipe(getCollection, getItems, R.map(processItem));
 export const processRes = R.compose(renderToSearchContainer, R.map(generateCardTemplate(styles)),processInfo);
