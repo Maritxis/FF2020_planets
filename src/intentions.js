@@ -8,9 +8,9 @@ import { Maybe } from './maybe.js';
 const url = "https://images-api.nasa.gov/search?q=";
 
 //pure functions that handles the DOM
-export const getDOMElement = (dom, selector, prop) => prop ? dom.querySelector(selector)[prop] : dom.querySelector(selector);
+export const getDOMElement = (selector, prop) => prop ? document.querySelector(selector)[prop] : document.querySelector(selector);
 export const renderToContainer = (container) => (element) => render(element, container);
-export const renderToSearchContainer = R.compose(renderToContainer, getDOMElement)(document, '.search-container');
+export const renderToSearchContainer = R.compose(renderToContainer, getDOMElement)('.search-container');
 export const generateCardTemplate = (styles) => (info) => {
   return html`<div style=${styleMap(styles.card)}>
     <h2>${info.title}</h2>
@@ -22,7 +22,7 @@ export const generateCardTemplate = (styles) => (info) => {
 }
 
 //pure functions that handle the request:
-export const getData = planet  => () => fetch(url+planet);
+export const getData = planet => fetch(url+planet);
 export const getCollection = R.prop('collection');
 export const getItems = R.prop('items');
 export const getHrefFromElement0 = R.map(R.compose(R.prop('href'), R.prop('0')));

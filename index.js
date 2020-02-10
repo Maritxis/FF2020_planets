@@ -13,12 +13,12 @@ const addListenerToElement = (element, f) => {
 
 
 const buttonListenerFunction = (dom) => {
-  const res = R.compose(getData, getDOMElement)(dom, '#planet', 'value');
-  res().then(res => res.json().then(data => processRes(data)));
+  const res = R.compose(getData, getDOMElement)('#planet', 'value');
+  res.then(res => res.json().then(data => processRes(data)));
 }
 
 const currifiedAddListener = R.curry(addListenerToElement);
-currifiedAddListener(getDOMElement(document, 'button'))(buttonListenerFunction);
+currifiedAddListener(getDOMElement('button'))(buttonListenerFunction);
 
 
 
