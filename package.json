@@ -1,0 +1,16 @@
+{
+  "name": "prueba_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server",
+    "test": "mocha --compilers babel-register ./tests/unitary.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lit-html": "^1.1.2",
+    "ramda": "^0.26.1"
+  }
+}

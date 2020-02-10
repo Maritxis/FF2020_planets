@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Mocha Tests</title>
+        <script src="//cdn.jsdelivr.net/npm/ramda@latest/dist/ramda.min.js"></script>
+        <link href="https://unpkg.com/mocha@4.0.1/mocha.css" rel="stylesheet" />
+    </head>
+    <body>
+    <div id="mocha"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/7.0.1/mocha.min.js"></script>
+    
+    <script>mocha.setup('bdd')</script>
+    <script type="module" src="unitary.test.js"></script>
+    <script type="module">
+        mocha.checkLeaks();
+        mocha.run();
+    </script>
+    </body>
+</html>
